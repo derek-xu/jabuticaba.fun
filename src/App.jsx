@@ -89,11 +89,10 @@ function App() {
 
   return (
     <div className="quiz-container">
-      <h1>Not Fair - Take the Quiz</h1>
+      <h1>Fairness Quiz</h1>
       <p className="intro">
-        This is a quiz that will test your fairness.
-      </p>
-      <p className="intro">
+        This is a quiz to test your concept of fairness.
+        <br></br>
         You will be asked a series of questions about fairness.
       </p>
 
