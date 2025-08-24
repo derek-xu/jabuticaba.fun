@@ -13,14 +13,13 @@ function App() {
       [currentQuestion]: answer
     }))
     
-    // Automatically advance to next question after a short delay
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1)
       } else {
         setShowResults(true)
       }
-    }, 250) // 500ms delay to show the selection briefly
+    }, 250) 
   }
 
 
