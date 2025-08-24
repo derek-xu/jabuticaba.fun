@@ -1,11 +1,11 @@
 export const questions = [
   // Everyday Personal Fairness Questions
-  {
-    id: 1,
-    category: "Everyday Personal Fairness",
-    question: "A couple splits rent 50/50 even though one person earns 3× more than the other.",
-    options: ["Fair", "Not Fair"]
-  },
+  // {
+  //   id: 1,
+  //   category: "Everyday Personal Fairness",
+  //   question: "A couple splits rent 50/50 even though one person earns 3× more than the other.",
+  //   options: ["Fair", "Not Fair"]
+  // },
   {
     id: 2,
     category: "Everyday Personal Fairness",
