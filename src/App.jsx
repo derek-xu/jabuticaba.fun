@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { questions, fairAnswers } from './questions.js'
 import './App.css'
 
@@ -6,8 +6,10 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState({})
   const [showResults, setShowResults] = useState(false)
+  const [selectedOption, setSelectedOption] = useState(null)
 
   const handleAnswer = (answer) => {
+    setSelectedOption(answer)
     setAnswers(prev => ({
       ...prev,
       [currentQuestion]: answer
@@ -22,12 +24,18 @@ function App() {
     }, 250) 
   }
 
+  // Reset selectedOption whenever currentQuestion changes
+  useEffect(() => {
+    setSelectedOption(null)
+  }, [currentQuestion])
+
 
 
   const resetQuiz = () => {
     setCurrentQuestion(0)
     setAnswers({})
     setShowResults(false)
+    setSelectedOption(null)
   }
 
   const getFairnessScore = () => {
@@ -56,7 +64,7 @@ function App() {
 
   if (showResults) {
     const score = getFairnessScore()
-    const percentage = (score / questions.length) * 100
+    const percentage = ((score / questions.length) * 100).toFixed(2)
     const categoryScores = getCategoryScores()
     
     return (
@@ -89,11 +97,10 @@ function App() {
 
   return (
     <div className="quiz-container">
-      <h1>Not Fair - Take the Quiz</h1>
+      <h1>Fairness Quiz</h1>
       <p className="intro">
-        This is a quiz that will test your fairness.
-      </p>
-      <p className="intro">
+        This is a quiz to test your concept of fairness.
+        <br></br>
         You will be asked a series of questions about fairness.
       </p>
 
@@ -111,9 +118,9 @@ function App() {
         <div className="options">
           {questions[currentQuestion].options.map((option, index) => (
             <button
-              key={index}
+              key={`${currentQuestion}-${index}`}
               onClick={() => handleAnswer(option)}
-              className={`option-btn ${answers[currentQuestion] === option ? 'selected' : ''}`}
+              className={`option-btn ${selectedOption === option ? 'selected' : ''}`}
             >
               {option}
             </button>
