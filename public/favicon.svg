@@ -1,9 +1,11 @@
 <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Jabuticaba Face Logo</title>
-  <desc id="desc">A single abstract face with a teardrop shape, in jabuticaba purple color.</desc>
-  <circle cx="150" cy="150" r="120" fill="#2e003e"/>
+  <title id="title">Jabuticaba Face Logo (Smaller Head)</title>
+  <desc id="desc">A single abstract face with a teardrop shape, in jabuticaba purple; smaller head to emphasize facial features.</desc>
   
-  <!-- Tear drop -->
+  <!-- Head (smaller radius) -->
+  <circle cx="150" cy="150" r="105" fill="#2e003e"/>
+  
+  <!-- Tear drop (cheek shape) -->
   <path d="M210 180
            C240 210, 240 250, 210 270
            C180 250, 180 210, 210 180Z" 
