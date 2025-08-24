@@ -1,14 +1,16 @@
 .quiz-container {
   width: 100%;
+  height: 100vh;
   margin: 0;
   padding: 2rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .quiz-container h1 {
@@ -32,9 +34,11 @@
   border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  margin: 2rem auto 0 auto;
+  margin: 1rem auto;
   max-width: 800px;
   width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .progress {
@@ -150,9 +154,11 @@
   padding: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin: 2rem auto 0 auto;
+  margin: 1rem auto;
   max-width: 800px;
   width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .results h2 {
