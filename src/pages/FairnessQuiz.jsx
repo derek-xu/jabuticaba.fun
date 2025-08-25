@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { questions } from "../global/questions.js";
+import { archetypeDescriptionMap, questions } from "../global/questions.js";
 import {
   RadarChart,
   PolarGrid,
@@ -78,12 +78,12 @@ function FairnessQuiz() {
 
   const getTopType = () => {
     const scores = [
-      { type: "Meritocrat", score: meritocraticScore },
-      { type: "Egalitarian", score: egalitarianScore },
-      { type: "Capital Maximist", score: capitalMaximistScore },
-      { type: "Balancer", score: balancerScore },
-      { type: "Protector", score: protectorScore },
-      { type: "Pragmatist", score: pragmatistScore },
+      { type: "🏛 Meritocrat", score: meritocraticScore },
+      { type: "🌱 Egalitarian", score: egalitarianScore },
+      { type: "🚀 Capital Maximist", score: capitalMaximistScore },
+      { type: "⚖️ Balancer", score: balancerScore },
+      { type: "🛡 Protector", score: protectorScore },
+      { type: "🤹 Pragmatist", score: pragmatistScore },
     ];
     return scores.reduce((max, current) =>
       current.score > max.score ? current : max
@@ -120,8 +120,16 @@ function FairnessQuiz() {
           <h2 className="fairness-type">{topType.type}</h2>
           <div className="score-message">
             <p>
-              Based on your answers, you align most closely with the{" "}
-              {topType.type} fairness perspective.
+              {(() => {
+                // Extract the type name without emoji (e.g., "Meritocrat" from "🏛 Meritocrat")
+                const typeName = topType.type.split(" ")[1];
+                // Convert to lowercase to match archetypeDescriptionMap keys
+                const archetypeKey = typeName.toLowerCase();
+                return (
+                  archetypeDescriptionMap[archetypeKey] ||
+                  `Based on your answers, you align most closely with the ${topType.type} fairness perspective.`
+                );
+              })()}
             </p>
           </div>
 
