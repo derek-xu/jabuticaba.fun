@@ -303,3 +303,23 @@
     font-size: 1.1rem;
   }
 }
+
+.fairness-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.fairness-type {
+  font-size: 2.5rem;
+  color: #667eea;
+  margin: 0.5rem 0 1rem 0;
+  font-weight: bold;
+}
+
+.chart-container {
+  margin: 2rem 0;
+  padding: 1rem;
+}
