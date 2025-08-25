@@ -1,0 +1,19 @@
+1	Couple splits rent 50/50 even though one person earns 3× more	+2 🏛 Meritocrat, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 ⚖️ Balancer
+2	Friend charges $50 per passenger for gas (cost was $120)	+2 🚀 Capital Maximizer, +1 🤹 Pragmatist	+2 🌱 Egalitarian, +1 🛡 Protector
+3	Roommate charges 10% extra for grocery shopping time	+2 🏛 Meritocrat, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 🤹 Pragmatist
+4	Neighbor rents parking spot for $200/mo while street parking is free but scarce	+2 🚀 Capital Maximizer, +1 🏛 Meritocrat	+2 🌱 Egalitarian, +1 🛡 Protector
+5	Group splits dinner evenly though one orders cheaper	+2 ⚖️ Balancer, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 🤹 Pragmatist
+6	Pharmacy raises allergy med price by 15% in peak season	+2 🚀 Capital Maximizer, +1 🏛 Meritocrat	+2 🌱 Egalitarian, +1 🛡 Protector
+7	Streaming service raises price $5 with no new features	+2 🚀 Capital Maximizer, +1 ⚖️ Balancer	+2 🌱 Egalitarian, +1 🤹 Pragmatist
+8	Rideshare charges 25% more in low-income neighborhoods	+2 🚀 Capital Maximizer, +1 🏛 Meritocrat	+2 🌱 Egalitarian, +1 🛡 Protector
+9	Food delivery app adds 12% fee but none goes to drivers	+2 🚀 Capital Maximizer, +1 ⚖️ Balancer	+2 🌱 Egalitarian, +1 🛡 Protector
+10	Landlord raises rent 10% annually (market supports it)	+2 🚀 Capital Maximizer, +1 🏛 Meritocrat	+2 🛡 Protector, +1 🌱 Egalitarian
+11	Hospital prioritizes cash-paying patients over insured	+2 🚀 Capital Maximizer, +1 🏛 Meritocrat	+2 🛡 Protector, +1 🌱 Egalitarian
+12	University admits donor’s child, funds 20 scholarships	+2 ⚖️ Balancer, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 🛡 Protector
+13	City raises bus fares 10% to fund parks & bike lanes	+2 ⚖️ Balancer, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 🛡 Protector
+14	Employer promotes 70-hour/week worker (unsustainable)	+2 🏛 Meritocrat, +1 🚀 Capital Maximizer	+2 🤹 Pragmatist, +1 🛡 Protector
+15	Grocery raises food prices 8%, raises wages 10%	+2 ⚖️ Balancer, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 🛡 Protector
+16	Company sells $100 “priority interview slots”	+2 🏛 Meritocrat, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 🛡 Protector
+17	Bakery throws away unsold bread (liability issues)	+2 🏛 Meritocrat, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 🤹 Pragmatist
+18	Credit card charges higher interest to low-income borrowers	+2 🏛 Meritocrat, +1 🚀 Capital Maximizer	+2 🌱 Egalitarian, +1 🛡 Protector
+19	HOA bans renter street parking to protect property values	+2 🚀 Capital Maximizer, +1 🏛 Meritocrat	+2 🌱 Egalitarian, +1 🛡 Protector

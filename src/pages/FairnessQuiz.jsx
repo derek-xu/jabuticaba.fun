@@ -1,95 +1,156 @@
-import { useState, useEffect } from 'react'
-import { questions, fairAnswers } from '../questions.js'
-import '../App.css'
+import { useState, useEffect } from "react";
+import { questions } from "../global/questions.js";
+import {
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Radar,
+  ResponsiveContainer,
+} from "recharts";
+import "../App.css";
 
 function FairnessQuiz() {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState({})
-  const [showResults, setShowResults] = useState(false)
-  const [selectedOption, setSelectedOption] = useState(null)
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [_answers, setAnswers] = useState({});
+  const [showResults, setShowResults] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  // Type tracking variables
+  const [meritocraticScore, setMeritocraticScore] = useState(0);
+  const [egalitarianScore, setEgalitarianScore] = useState(0);
+  const [capitalMaximistScore, setCapitalMaximistScore] = useState(0);
+  const [balancerScore, setBalancerScore] = useState(0);
+  const [protectorScore, setProtectorScore] = useState(0);
+  const [pragmatistScore, setPragmatistScore] = useState(0);
 
   const handleAnswer = (answer) => {
-    setSelectedOption(answer)
-    setAnswers(prev => ({
+    setSelectedOption(answer);
+    setAnswers((prev) => ({
       ...prev,
-      [currentQuestion]: answer
-    }))
-    
+      [currentQuestion]: answer,
+    }));
+
+    // Update type scores based on the question's typeScores
+    const scoreUpdates = questions[currentQuestion].typeScores?.[answer];
+
+    if (scoreUpdates) {
+      if (scoreUpdates.meritocratic)
+        setMeritocraticScore((prev) => prev + scoreUpdates.meritocratic);
+      if (scoreUpdates.egalitarian)
+        setEgalitarianScore((prev) => prev + scoreUpdates.egalitarian);
+      if (scoreUpdates.capitalMaximist)
+        setCapitalMaximistScore((prev) => prev + scoreUpdates.capitalMaximist);
+      if (scoreUpdates.balancer)
+        setBalancerScore((prev) => prev + scoreUpdates.balancer);
+      if (scoreUpdates.protector)
+        setProtectorScore((prev) => prev + scoreUpdates.protector);
+      if (scoreUpdates.pragmatist)
+        setPragmatistScore((prev) => prev + scoreUpdates.pragmatist);
+    }
+
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1)
+        setCurrentQuestion(currentQuestion + 1);
       } else {
-        setShowResults(true)
+        setShowResults(true);
       }
-    }, 250) 
-  }
+    }, 250);
+  };
 
   useEffect(() => {
-    setSelectedOption(null)
-  }, [currentQuestion])
+    setSelectedOption(null);
+  }, [currentQuestion]);
 
   const resetQuiz = () => {
-    setCurrentQuestion(0)
-    setAnswers({})
-    setShowResults(false)
-    setSelectedOption(null)
-  }
+    setCurrentQuestion(0);
+    setAnswers({});
+    setShowResults(false);
+    setSelectedOption(null);
+    // Reset type scores
+    setMeritocraticScore(0);
+    setEgalitarianScore(0);
+    setCapitalMaximistScore(0);
+    setBalancerScore(0);
+    setProtectorScore(0);
+    setPragmatistScore(0);
+  };
 
-  const getFairnessScore = () => {
-    let score = 0
-    Object.values(answers).forEach((answer, index) => {
-      if (answer === fairAnswers[index]) {
-        score++
-      }
-    })
-    return score
-  }
+  const getTopType = () => {
+    const scores = [
+      { type: "Meritocrat", score: meritocraticScore },
+      { type: "Egalitarian", score: egalitarianScore },
+      { type: "Capital Maximist", score: capitalMaximistScore },
+      { type: "Balancer", score: balancerScore },
+      { type: "Protector", score: protectorScore },
+      { type: "Pragmatist", score: pragmatistScore },
+    ];
+    return scores.reduce((max, current) =>
+      current.score > max.score ? current : max
+    );
+  };
 
-  const getCategoryScores = () => {
-    const categories = {}
-    questions.forEach((q, index) => {
-      if (!categories[q.category]) {
-        categories[q.category] = { total: 0, correct: 0 }
-      }
-      categories[q.category].total++
-      if (answers[index] === "Not Fair") {
-        categories[q.category].correct++
-      }
-    })
-    return categories
-  }
+  const getTypeScores = () => {
+    return [
+      { type: "Meritocrat", score: meritocraticScore },
+      { type: "Egalitarian", score: egalitarianScore },
+      { type: "Capital Maximist", score: capitalMaximistScore },
+      { type: "Balancer", score: balancerScore },
+      { type: "Protector", score: protectorScore },
+      { type: "Pragmatist", score: pragmatistScore },
+    ];
+  };
 
   if (showResults) {
-    const score = getFairnessScore()
-    const percentage = ((score / questions.length) * 100).toFixed(2)
-    const categoryScores = getCategoryScores()
-    
+    const topType = getTopType();
+    const typeScores = getTypeScores();
+
+    // Prepare data for radar chart
+    const chartData = typeScores.map((item) => ({
+      type: item.type,
+      score: item.score,
+      fullMark: Math.max(...typeScores.map((t) => t.score)) || 10,
+    }));
+
     return (
       <div className="quiz-container">
         <h1>Quiz Results</h1>
         <div className="results">
-          <h2>Your Fairness Score: {score}/{questions.length}</h2>
-          <p className="percentage">{percentage}%</p>
+          <p className="fairness-label">Your Fairness Type:</p>
+          <h2 className="fairness-type">{topType.type}</h2>
           <div className="score-message">
-            {percentage >= 80 && <p>Excellent! You have a strong sense of fairness.</p>}
-            {percentage >= 60 && percentage < 80 && <p>Good! You generally recognize unfair situations.</p>}
-            {percentage >= 40 && percentage < 60 && <p>Fair. You have room to improve your fairness awareness.</p>}
-            {percentage < 40 && <p>Consider reflecting on what fairness means to you.</p>}
+            <p>
+              Based on your answers, you align most closely with the{" "}
+              {topType.type} fairness perspective.
+            </p>
           </div>
-          
-          <div className="category-breakdown">
-            <h3>Breakdown by Category:</h3>
-            {Object.entries(categoryScores).map(([category, scores]) => (
-              <div key={category} className="category-score">
-                <h4>{category}</h4>
-                <p>{scores.correct}/{scores.total} questions correct</p>
-              </div>
-            ))}
+
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height={400}>
+              <RadarChart data={chartData}>
+                <PolarGrid gridType="polygon" radialLines={true} />
+                <PolarAngleAxis dataKey="type" />
+                <PolarRadiusAxis
+                  angle={90}
+                  domain={[0, "dataMax"]}
+                  tick={false}
+                />
+                <Radar
+                  name="Score"
+                  dataKey="score"
+                  stroke="#667eea"
+                  fill="#667eea"
+                  fillOpacity={0.6}
+                />
+              </RadarChart>
+            </ResponsiveContainer>
           </div>
         </div>
-        <button onClick={resetQuiz} className="reset-btn">Take Quiz Again</button>
+        <button onClick={resetQuiz} className="reset-btn">
+          Take Quiz Again
+        </button>
       </div>
-    )
+    );
   }
 
   return (
@@ -105,19 +166,21 @@ function FairnessQuiz() {
         <div className="progress">
           Question {currentQuestion + 1} of {questions.length}
         </div>
-        
+
         <div className="category-label">
           {questions[currentQuestion].category}
         </div>
-        
+
         <h2 className="question">{questions[currentQuestion].question}</h2>
-        
+
         <div className="options">
           {questions[currentQuestion].options.map((option, index) => (
             <button
               key={`${currentQuestion}-${index}`}
               onClick={() => handleAnswer(option)}
-              className={`option-btn ${selectedOption === option ? 'selected' : ''}`}
+              className={`option-btn ${
+                selectedOption === option ? "selected" : ""
+              }`}
             >
               {option}
             </button>
@@ -125,7 +188,7 @@ function FairnessQuiz() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default FairnessQuiz
+export default FairnessQuiz;
