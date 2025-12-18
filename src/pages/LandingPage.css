@@ -1,62 +1,94 @@
 .landing-container {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
+  background: #1a1a1a;
+  padding: 40px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
-.landing-content {
+.landing-header {
   text-align: center;
-  max-width: 600px;
-  background: white;
-  padding: 60px 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  margin-bottom: 60px;
+  padding: 40px 20px;
 }
 
 .landing-title {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: bold;
+  font-size: 4rem;
+  margin-bottom: 16px;
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-transform: uppercase;
 }
 
 .landing-subtitle {
-  font-size: 1.5rem;
-  color: #4a5568;
-  margin-bottom: 30px;
-  font-weight: 500;
-}
-
-.landing-description {
-  font-size: 1.1rem;
-  color: #718096;
-  line-height: 1.8;
-  margin-bottom: 40px;
-}
-
-.start-quiz-btn {
-  display: inline-block;
-  padding: 16px 40px;
-  margin: 10px 15px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  text-decoration: none;
-  border-radius: 50px;
   font-size: 1.2rem;
-  font-weight: 600;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  color: #888;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.start-quiz-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.collection-item {
+  background: #ffffff;
+  border: 3px solid #000000;
+  padding: 0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.collection-item:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px 0px #667eea;
+}
+
+.collection-item.coming-soon {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.collection-item.coming-soon:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.collection-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  height: 100%;
+}
+
+.collection-content {
+  padding: 32px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.collection-title {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: #000000;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.collection-description {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -65,10 +97,20 @@
   }
   
   .landing-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
-  .landing-content {
-    padding: 40px 30px;
+  .collection-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .collection-content {
+    padding: 24px;
+    min-height: 160px;
+  }
+  
+  .collection-title {
+    font-size: 1.5rem;
   }
 }
