@@ -1,4 +1,5 @@
 .landing-container {
+  position: relative;
   min-height: 100vh;
   background: #1a1a1a;
   padding: 40px 20px;
@@ -28,6 +29,102 @@
   letter-spacing: 2px;
 }
 
+.category-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.category-btn {
+  background: #ffffff;
+  border: 3px solid #000000;
+  padding: 32px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s;
+  display: block;
+  text-align: center;
+}
+
+.category-btn:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px 0px #667eea;
+}
+.category-btn:active,
+.category-btn:active:focus,
+.category-btn:active:focus-visible {
+  transform: translate(0, 4px);
+  box-shadow: none;
+}
+
+.category-btn-title {
+  font-size: 2.5rem;
+  color: #000000;
+  margin-bottom: 12px;
+  margin-top: 5px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.category-btn-description {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.back-link {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5rem 1rem;
+  border: 2px solid #ffffff;
+  background: transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s;
+}
+
+.back-link:hover {
+  background: #ffffff;
+  color: #1a1a1a;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px 0px #667eea;
+}
+.back-link:active,
+.back-link:active:focus,
+.back-link:active:focus-visible {
+  transform: translate(0, 2px);
+  box-shadow: none;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #000000;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 32px;
+  padding: 16px 24px;
+  background: #ffffff;
+  border: 3px solid #000000;
+  display: inline-block;
+  box-shadow: 4px 4px 0px 0px #667eea;
+}
+
 .collection-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -40,13 +137,19 @@
   background: #ffffff;
   border: 3px solid #000000;
   padding: 0;
-  transition: all 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
   position: relative;
 }
 
 .collection-item:hover {
   transform: translate(-4px, -4px);
   box-shadow: 8px 8px 0px 0px #667eea;
+}
+.collection-item:active,
+.collection-item:active:focus,
+.collection-item:active:focus-visible {
+  transform: translate(0, 4px);
+  box-shadow: none;
 }
 
 .collection-item.coming-soon {
@@ -98,6 +201,36 @@
   
   .landing-subtitle {
     font-size: 1rem;
+  }
+  
+  .category-buttons {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .category-btn {
+    padding: 36px 32px;
+  }
+  
+  .category-btn-title {
+    font-size: 2rem;
+  }
+  
+  .back-link {
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    padding: 12px 20px;
+    margin-bottom: 24px;
+  }
+  
+  .section-container {
+    margin-bottom: 40px;
   }
   
   .collection-grid {
