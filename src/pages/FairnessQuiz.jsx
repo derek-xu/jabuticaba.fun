@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { archetypeDescriptionMap, questions } from "../global/questions.js";
 import {
   RadarChart,
@@ -114,6 +115,7 @@ function FairnessQuiz() {
 
     return (
       <div className="quiz-container">
+        <Link to="/" className="home-link">← Back to Collection</Link>
         <h1>Quiz Results</h1>
         <div className="results">
           <p className="fairness-label">Your Fairness Type:</p>
@@ -163,6 +165,7 @@ function FairnessQuiz() {
 
   return (
     <div className="quiz-container">
+      <Link to="/" className="home-link">← Back to Collection</Link>
       <h1>Fairness Quiz</h1>
       <p className="intro">
         This is a quiz to test your concept of fairness.
